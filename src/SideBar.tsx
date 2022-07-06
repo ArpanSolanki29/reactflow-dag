@@ -1,30 +1,62 @@
 import React from 'react'
+import { useDrag } from 'react-dnd'
 
-
+export interface NodeTypeProps {
+    kind: string
+}
 
 export default function SideBar() {
-    
-    function handleDrag(ev: React.DragEvent<HTMLDivElement>, nodeType: string): void {
-        ev.dataTransfer.setData("application/react-flow", nodeType);
-        ev.dataTransfer.effectAllowed = 'move';
-    }
-
     return (
-        <aside>
+        <aside style={{float: 'right', width: '25%'}}>
             <div className='description'>
                 You can drag these nodes.
             </div>
-            <div className='dndnode input' draggable={true} onDragStart={(event) => handleDrag(event, 'input')}>
-                Input Node
+            <div className='dndnode input' draggable={true}>
+                <Node kind='Input'/>
             </div>
 
-            <div className='dndnode' draggable={true} onDragStart={(event) => handleDrag(event, 'default')}>
-                Default Node
+            <div className='dndnode' draggable={true}>
+                <Node kind='Default'/>
             </div>
 
-            <div className='dndnode output' draggable={true} onDragStart={(event) => handleDrag(event, 'output')}>
-                Ouput Node
+            <div className='dndnode output' draggable={true}>
+                <Node kind='Output'/>
             </div>
         </aside>
     )
+}
+
+
+
+
+export const Node = (props: NodeTypeProps): React.ReactElement => {
+
+    const [_, drag] = useDrag(() => ({
+        type: 'node',
+        item: {kind: props.kind}
+    }));
+    
+    return (
+        <div
+			ref={drag}
+			className="abstract"
+			style={{
+				cursor: "move",
+				margin: "1em",
+				display: "flex",
+				alignItems: "center",
+				padding: 12,
+			}}
+		>
+			<div
+				style={{
+					flex: 1,
+					marginLeft: 6,
+					marginRight: 6,
+				}}
+			>
+				{props.kind} Node
+			</div>
+		</div>
+    );
 }

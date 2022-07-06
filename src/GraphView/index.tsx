@@ -1,7 +1,10 @@
 import React from 'react'
+import FlowRenderer from '../FlowRenderer';
 
 const GraphView = () => {
-  return 
+  return (
+    <FlowRenderer></FlowRenderer>
+  );
 }
 
 export default GraphView;
