@@ -10,7 +10,9 @@ const Editor = () => {
 		drop({ kind }, monitor) {
       console.log(kind);
       const location = monitor.getClientOffset();
-			console.log(location);
+			const x = location?.x;
+      const y = location?.y;
+      
 		},
 	})
 

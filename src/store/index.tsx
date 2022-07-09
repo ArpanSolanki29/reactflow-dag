@@ -1,20 +1,15 @@
 import React from 'react'
-import create, { StoreApi } from 'zustand';
-import createContext from 'zustand/context';
-import { ReactFlowState, ReactFlowStore } from '../types/general';
+import create from 'zustand';
 import initialState from './initialState';
+import {DAGState, Node} from './state';
 
-const { Provider, useStore, useStoreApi } = createContext<StoreApi<ReactFlowState>>();
 
-const createStore = () => 
-  create<ReactFlowState>((set, get) => ({
+const useStore = () => create<DAGState>((set, get) => ({
     ...initialState,
+    addNode: (nodes: Node[]) => set(state => ({
+        ...state.nodes,
+        nodes: nodes
+    }))
+}));
 
-  }))
-    
-
-export function index() {
-  return null;
-}
-
-export {Provider, useStore, useStoreApi, createStore};
+export default useStore;

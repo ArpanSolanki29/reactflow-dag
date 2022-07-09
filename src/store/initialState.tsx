@@ -1,7 +1,8 @@
-import { ReactFlowStore } from "../types/general";
+import { DAGState} from "./state";
 
-const initialState : ReactFlowStore =  {
-    
-}
+const initialState : DAGState =  {
+    nodes: [],
+    edges: []
+};
 
 export default initialState;

@@ -12,15 +12,15 @@ export default function SideBar() {
                 You can drag these nodes.
             </div>
             <div className='dndnode input' draggable={true}>
-                <Node kind='Input'/>
+                <NodeType kind='Input'/>
             </div>
 
             <div className='dndnode' draggable={true}>
-                <Node kind='Default'/>
+                <NodeType kind='Default'/>
             </div>
 
             <div className='dndnode output' draggable={true}>
-                <Node kind='Output'/>
+                <NodeType kind='Output'/>
             </div>
         </aside>
     )
@@ -29,7 +29,7 @@ export default function SideBar() {
 
 
 
-export const Node = (props: NodeTypeProps): React.ReactElement => {
+export const NodeType = (props: NodeTypeProps): React.ReactElement => {
 
     const [_, drag] = useDrag(() => ({
         type: 'node',
