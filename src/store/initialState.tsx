@@ -1,6 +1,6 @@
-import { DAGState} from "./state";
+import { DAGStore} from "./state";
 
-const initialState : DAGState =  {
+const initialState : DAGStore =  {
     nodes: [],
     edges: []
 };

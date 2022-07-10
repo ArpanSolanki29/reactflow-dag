@@ -1,5 +1,5 @@
 export type Position = {
-    x: Number; y: Number;
+    x: number; y: number;
 }
 
 export type Node = {
@@ -16,7 +16,13 @@ export type Edge = {
     endPosition: Position;
 }
 
-export type DAGState = {
+export type DAGState = DAGStore & DAGAction;
+
+export type DAGStore = {
     nodes: Node[];
     edges: Edge[];
+}
+
+export type DAGAction = {
+    addNode: (node: Node) => void;
 }
