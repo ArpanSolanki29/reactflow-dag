@@ -1,5 +1,5 @@
 import React, {FC, PropsWithChildren} from 'react'
-import { createStore, Provider } from '../../store'
+import { createStore, Provider } from '../../store/index[Deprecated]'
 
 
 const ReactFlowProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
